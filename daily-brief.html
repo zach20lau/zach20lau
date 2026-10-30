@@ -1,0 +1,348 @@
+<title>Data Center Account Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a morning sales brief. Summary strip first, then one column per account, then the world desk and a calendar. Reads like a field engineer's datasheet. */
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --ink: #16202b;
+  --muted: #5a6876;
+  --line: #d9dfe5;
+  --accent: #b5620a;
+  --accent-soft: #fbeedd;
+  --opp: #1d7a4c; --opp-bg: #e3f3ea;
+  --watch: #8a6a00; --watch-bg: #fbf3d4;
+  --risk: #b0302a; --risk-bg: #fbe6e4;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151c; --surface: #17202a; --ink: #e6ebf0; --muted: #98a5b3; --line: #2a3542;
+  --accent: #f0a050; --accent-soft: #3a2a17;
+  --opp: #6fd29c; --opp-bg: #163327; --watch: #e8c65a; --watch-bg: #332b12; --risk: #f08a82; --risk-bg: #3a1c1a;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0f151c; --surface: #17202a; --ink: #e6ebf0; --muted: #98a5b3; --line: #2a3542;
+  --accent: #f0a050; --accent-soft: #3a2a17;
+  --opp: #6fd29c; --opp-bg: #163327; --watch: #e8c65a; --watch-bg: #332b12; --risk: #f08a82; --risk-bg: #3a1c1a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 36px; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+.label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+header.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+header.top h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; font-stretch: 80%; letter-spacing: -.01em; line-height: 1; }
+header.top .meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); text-align: right; }
+header.top .meta strong { color: var(--ink); font-weight: 600; }
+
+.brief { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+.brief h2 { font-size: 22px; font-stretch: 85%; font-weight: 700; }
+.brief ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: k; }
+.brief li { counter-increment: k; display: grid; grid-template-columns: 34px 1fr; gap: 8px; align-items: baseline; }
+.brief li::before { content: counter(k); font-family: var(--font-mono); font-weight: 600; color: var(--accent); }
+.brief li b { font-weight: 600; }
+
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.sec-head h2 { font-size: 26px; font-stretch: 80%; font-weight: 800; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.chip.opp { color: var(--opp); background: var(--opp-bg); }
+.chip.watch { color: var(--watch); background: var(--watch-bg); }
+.chip.risk { color: var(--risk); background: var(--risk-bg); }
+
+.accounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.acct { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.acct-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.acct-head h3 { font-size: 24px; font-weight: 800; font-stretch: 80%; }
+.acct-head .tick { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.items { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.item { display: grid; gap: 4px; padding-top: 12px; border-top: 1px solid var(--line); }
+.item:first-child { border-top: 0; padding-top: 0; }
+.item-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.item-top .date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.item h4 { margin: 0; font-size: 15.5px; font-weight: 600; line-height: 1.35; }
+.item p { margin: 0; color: var(--ink); }
+.item .src { font-size: 12.5px; color: var(--muted); }
+.angle { background: var(--accent-soft); border-radius: 4px; padding: 12px 14px; display: grid; gap: 6px; }
+.angle .label { color: var(--accent); }
+.angle ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.copy { justify-self: start; font: 600 12px var(--font-mono); background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+.world { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 28px; }
+.region { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.region h3 { font-size: 15px; font-weight: 700; font-stretch: 90%; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+
+.cal { overflow-x: auto; }
+.cal table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+.cal th, .cal td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cal th { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.cal td:first-child { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 6px; }
+
+@media (max-width: 900px) { .world { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) {
+  .accounts, .world, .brief { grid-template-columns: 1fr; }
+  header.top .meta { text-align: left; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="label">Account brief · Microsoft · Dell · HPE · AMD</div>
+      <h1>Data Center Account Brief</h1>
+    </div>
+    <div class="meta">
+      <div><strong>Friday, Oct 30, 2026</strong></div>
+      <div>Coverage: Oct 1 – Oct 30 · weighted to last 72h</div>
+    </div>
+  </header>
+
+  <section class="brief" aria-labelledby="brief-h">
+    <h2 id="brief-h">Today in 60 seconds</h2>
+    <ol>
+      <li><span><b>Microsoft's AI spend holds; delivery is the bottleneck.</b> FQ1 capex came in at $45.2B against roughly $50.7B expected because partners delivered capacity late. Azure grew 48%. FY27 capex is still about $170B.</span></li>
+      <li><span><b>AMD and Meta went deeper on Oct 27.</b> Meta has Helios racks in testing, and the deal covers a future EPYC called "Verano". AMD Q3 earnings are expected around Nov 3 (not yet confirmed).</span></li>
+      <li><span><b>Dell has three new PowerEdge platforms ramping into Q1 CY27.</b> R8822, M9882 and XE9810 use NVIDIA Vera CPUs and Groq 3 LPUs. Boards still being finalized are design-in openings.</span></li>
+      <li><span><b>HPE's ProLiant Gen13 runs on 6th Gen EPYC and OCP racks.</b> The XD245 (liquid-cooled) and XD285 ship in 2027. HPE also has a $1.2B Vultr order for AMD Helios racks.</span></li>
+      <li><span><b>Power and permitting are the industry-wide constraint.</b> 41 local ballot measures across 10 US states vote on data center limits. The UK is tying grid priority to a 6 GW target. Equipment lead times keep stretching.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="acct-h" style="display:grid;gap:16px">
+    <div class="sec-head">
+      <h2 id="acct-h">Your accounts</h2>
+      <div class="legend" aria-label="Signal legend">
+        <span class="chip opp">Opportunity</span><span class="chip watch">Watch</span><span class="chip risk">Risk</span>
+      </div>
+    </div>
+
+    <div class="accounts">
+      <!-- MICROSOFT -->
+      <article class="acct" id="msft">
+        <div class="acct-head"><h3>Microsoft</h3><span class="tick">MSFT · Azure / Maia</span></div>
+        <ul class="items">
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
+            <h4>FQ1'27: Azure +48% to $33.2B, capex $45.2B, FY27 capex about $170B</h4>
+            <p>Capex came in under the street because AI cloud partners delivered capacity late. Next quarter's Azure guide is 49–50%. Microsoft added 24 data centers on five continents this quarter, and about 75% of capex now goes to short-lived assets (GPUs and CPUs).</p>
+            <div class="src"><a href="https://siliconangle.com/2026/10/28/microsofts-stock-rises-on-solid-earnings-and-revenue-beat-with-azure-growing-48/" target="_blank" rel="noopener">SiliconANGLE</a> · <a href="https://www.datacenterdynamics.com/en/news/microsoft-q3-earnings-data-center-ai-azure-satya-nadella/" target="_blank" rel="noopener">DCD</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 12</span></div>
+            <h4>Maia 300 custom AI chip starts rolling out next year, at multi-gigawatt scale</h4>
+            <p>Microsoft plans to put gigawatts of its own Maia silicon into its data centers, with Maia 300 deploying in 2027.</p>
+            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-12/microsoft-prepares-to-put-gigawatts-of-its-chips-in-data-centers" target="_blank" rel="noopener">Bloomberg</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
+            <h4>La Porte, Indiana campus confirmed at 788 MW</h4>
+            <p>NiSource says the site needs $540M in grid upgrades by the end of 2027. Microsoft also bought 37 acres in Licking County, Ohio, and signed two solar PPAs in Japan with Blueleaf Energy (portfolio of about 1.2 GW).</p>
+            <div class="src"><a href="https://panoramanow.com/microsoft-data-center-in-laporte-to-use-788-megawatts-of-power/" target="_blank" rel="noopener">PanoramaNOW</a> · <a href="https://missioncriticalconnections.substack.com/p/mission-critical-news-october-29" target="_blank" rel="noopener">Mission Critical News</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Oct 18</span></div>
+            <h4>Microsoft pulls out of the Nscale Loughton (UK) site, about $2.7B</h4>
+            <p>The site was stalled by grid power limits. Microsoft says the decision covers that one site, and its US, Norway and Portugal partnerships are unaffected.</p>
+            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-18/microsoft-scraps-uk-data-center-deal-with-nscale-telegraph-says" target="_blank" rel="noopener">Bloomberg</a> · <a href="https://www.benzinga.com/markets/tech/26/10/62596402/microsoft-ai-data-center-misfire-exposes-brutal-reality" target="_blank" rel="noopener">Benzinga</a></div>
+          </li>
+        </ul>
+        <div class="angle">
+          <div class="label">TI talking points</div>
+          <ul>
+            <li>Demand is real and capacity is late. Lead with supply assurance and lead-time commitments on power and analog.</li>
+            <li>Maia 300 boards are where design-in decisions are made now. Ask about multiphase power, hot-swap/eFuse and sequencing needs for 2027 builds.</li>
+            <li>788 MW sites and grid limits keep 48 V rack power and power-shelf efficiency on the agenda.</li>
+          </ul>
+          <button class="copy" type="button" data-target="msft">Copy talking points</button>
+        </div>
+      </article>
+
+      <!-- DELL -->
+      <article class="acct" id="dell">
+        <div class="acct-head"><h3>Dell Technologies</h3><span class="tick">DELL · PowerEdge</span></div>
+        <ul class="items">
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 21</span></div>
+            <h4>New PowerEdge lineup at GTC Berlin: R8822, M9882, XE9810</h4>
+            <p>The R8822 is an air-cooled 2-socket NVIDIA Vera CPU server, available this month. The M9882 puts 256 Vera CPUs in a 48U rack (Q1 CY27). The XE9810 has 16 direct liquid-cooled trays of Groq 3 LPUs (Q1 CY27). Dell also showed an NVIDIA DSX POD modular data center reference design for early 2027.</p>
+            <div class="src"><a href="https://hyperframeresearch.com/2026/10/26/dell-extends-the-ai-factory-with-nvidia-to-the-agentic-execution-tier/" target="_blank" rel="noopener">HyperFRAME Research</a> · <a href="https://channelpostmea.com/2026/10/27/dell-expands-ai-factory-with-nvidia-to-accelerate-enterprise-agentic-ai-adoption/" target="_blank" rel="noopener">Channel Post MEA</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 21</span></div>
+            <h4>AI Factory customer count passes 6,500</h4>
+            <p>That's up from 5,000 last quarter, based on Dell's August order analysis. Enterprise AI keeps broadening beyond the hyperscalers.</p>
+            <div class="src"><a href="https://www.tokenpost.com/news/technology/37108" target="_blank" rel="noopener">TokenPost</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Oct 14 / 21</span></div>
+            <h4>Barclays cuts Dell to Equal Weight with a $574 target, and shares jump 5.3% on launch day</h4>
+            <p>The stock closed at $485.88 on Oct 21. The Street is debating AI server margins, not demand.</p>
+            <div class="src"><a href="https://finance.yahoo.com/markets/stocks/articles/dell-unveiled-ai-servers-week-194420295.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Oct 27</span></div>
+            <h4>Quantum-safe in-flight encryption for PowerStore with PowerEdge</h4>
+            <p>This is part of a wider cyber-resilience update for AI environments.</p>
+            <div class="src"><a href="https://investors.delltechnologies.com/news-events/press-releases/detail/1660/dell-technologies-strengthens-cybersecurity-and-resilience-across-ai-environments-identity-and-infrastructure" target="_blank" rel="noopener">Dell IR</a></div>
+          </li>
+        </ul>
+        <div class="angle">
+          <div class="label">TI talking points</div>
+          <ul>
+            <li>M9882 and XE9810 ship in Q1 CY27, so their boards are being locked now. Push for design-in on CPU/LPU power stages and power sequencing.</li>
+            <li>The XE9810 is liquid-cooled: offer pump motor drivers, temperature and leak sensing.</li>
+            <li>Margin pressure from Barclays means BOM cost and integration (fewer parts per rail) will land well.</li>
+          </ul>
+          <button class="copy" type="button" data-target="dell">Copy talking points</button>
+        </div>
+      </article>
+
+      <!-- HPE -->
+      <article class="acct" id="hpe">
+        <div class="acct-head"><h3>HPE</h3><span class="tick">HPE · ProLiant / Juniper</span></div>
+        <ul class="items">
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 7</span></div>
+            <h4>First four ProLiant Gen13 servers, all on 6th Gen AMD EPYC</h4>
+            <p>DL525 (later 2026). DL585a, with up to 8 double-wide GPUs (early 2027). XD245, a 1OU 4-node direct liquid-cooled server, and XD285, a 2OU 2-node air-cooled server, both OCP-compliant (2027). HPE also added automatic self-encrypting drives and broader post-quantum crypto.</p>
+            <div class="src"><a href="https://www.hpe.com/us/en/newsroom/press-release/2026/10/hpe-accelerates-enterprise-ai-innovation-with-next-generation-amd-cpu-powered-servers.html" target="_blank" rel="noopener">HPE Newsroom</a> · <a href="https://www.datacenterdynamics.com/en/news/hpe-launches-four-new-amd-powered-servers-as-part-of-its-proliant-gen13-portfolio/" target="_blank" rel="noopener">DCD</a> · <a href="https://www.nextplatform.com/compute/2026/10/08/hpe-unveils-the-first-of-the-next-generation-of-proliants-for-the-ai-era/5301808" target="_blank" rel="noopener">The Next Platform</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Early Oct</span></div>
+            <h4>$1.2B Vultr order for AMD Helios racks with Juniper networking</h4>
+            <p>Oracle is also using Juniper as the network backbone for a gigawatt-scale AI build.</p>
+            <div class="src"><a href="https://finance.yahoo.com/technology/ai/articles/hewlett-packard-enterprise-raises-ai-200211298.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Early Oct</span></div>
+            <h4>Networking Investor Day: Juniper synergy target raised to $800M</h4>
+            <p>Networking is guided to a high-teens CAGR from FY26 to FY29, and data center networking is its fastest-growing market. Daiwa upgraded the stock to Outperform. The stock hit a record high after the Gen13 launch.</p>
+            <div class="src"><a href="https://datacenter.news/story/hpe-lifts-networking-outlook-on-ai-demand-juniper-savings" target="_blank" rel="noopener">datacenter.news</a> · <a href="https://site.financialmodelingprep.com/market-news/hpe-stock-upgraded-outperform-ai-growth-juniper-integration" target="_blank" rel="noopener">FMP</a></div>
+          </li>
+        </ul>
+        <div class="angle">
+          <div class="label">TI talking points</div>
+          <ul>
+            <li>XD245 and XD285 are OCP Open Rack designs. Lead with 48 V bus conversion, hot-swap and rack power monitoring.</li>
+            <li>"$800M in synergies" means consolidating Juniper and Aruba platforms. Pitch common power and interface building blocks across the switch lines.</li>
+            <li>DL585a holds 8 GPUs per node, so it needs high-current rails and good telemetry.</li>
+          </ul>
+          <button class="copy" type="button" data-target="hpe">Copy talking points</button>
+        </div>
+      </article>
+
+      <!-- AMD -->
+      <article class="acct" id="amd">
+        <div class="acct-head"><h3>AMD</h3><span class="tick">AMD · EPYC / Instinct</span></div>
+        <ul class="items">
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 27</span></div>
+            <h4>Meta partnership expanded: Helios racks in testing, future EPYC "Verano"</h4>
+            <p>Millions of EPYC CPUs and Instinct GPUs are already in production at Meta. AMD will also reportedly put $1B into Meta's stock offering.</p>
+            <div class="src"><a href="https://cloudnews.tech/meta-already-testing-amd-helios-racks-plus-1-billion-investment/" target="_blank" rel="noopener">CloudNews</a> · <a href="https://www.igorslab.de/en/amd-meta-deepen-ai-infrastructure-collaboration/" target="_blank" rel="noopener">Igor's Lab</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">~Nov 3</span></div>
+            <h4>Q3 earnings coming up, guided to about $13.0B ± $300M</h4>
+            <p>Q2 data center revenue was about $6.7B, up 107% year over year. Analysts raised Q3 data center estimates by 4.4%. The date is not officially confirmed.</p>
+            <div class="src"><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/08/amd-postq-ai-growth-lifts-estimates-investment-expectations-weigh-on-shares" target="_blank" rel="noopener">S&amp;P Global</a> · <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener">AMD 10-Q</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct</span></div>
+            <h4>6th Gen EPYC is landing across OEMs</h4>
+            <p>HPE's first four Gen13 servers are all EPYC, and Helios racks are shipping through HPE/Vultr. AMD forecasts the server CPU market will top $120B by 2030.</p>
+            <div class="src"><a href="https://www.datacenterdynamics.com/en/news/amd-posts-q1-2026-data-center-revenue-of-58bn-forecasts-120bn-server-cpu-income-by-2030/" target="_blank" rel="noopener">DCD</a></div>
+          </li>
+        </ul>
+        <div class="angle">
+          <div class="label">TI talking points</div>
+          <ul>
+            <li>Helios is a rack-scale reference design. Get TI parts onto AMD's reference BOM for power shelves, VRMs and management, so they carry through to HPE, Meta and others.</li>
+            <li>Verano is the next socket. Ask about reference-platform power and timing requirements early.</li>
+            <li>Listen for supply comments on the Q3 call. They hint at the 2027 build plan.</li>
+          </ul>
+          <button class="copy" type="button" data-target="amd">Copy talking points</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="world-h" style="display:grid;gap:16px">
+    <div class="sec-head"><h2 id="world-h">Global data center desk</h2><span class="label">Major worldwide news</span></div>
+    <div class="world">
+      <div class="region">
+        <h3>United States</h3>
+        <div class="item"><div class="item-top"><span class="chip risk">Risk</span><span class="date">Oct 29</span></div><h4>Voters in 10 states face data center limits on the ballot</h4><p>41 measures in 38 jurisdictions would delay, prohibit or add requirements for data centers.</p><div class="src"><a href="https://www.usnews.com/news/politics/articles/2026-10-29/ai-data-center-boom-faces-backlash-at-us-ballot-box" target="_blank" rel="noopener">Reuters via US News</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct</span></div><h4>Capacity under construction is up 48% in six months</h4><p>Measured in GW from Dec 2025 to Jun 2026, according to Cushman &amp; Wakefield.</p><div class="src"><a href="https://www.constructiondive.com/news/data-center-construction-spending-backlash-pile-up/872768/" target="_blank" rel="noopener">Construction Dive</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip watch">Watch</span><span class="date">Early Oct</span></div><h4>States tighten the rules</h4><p>Virginia's governor limited state help and fast-track permits. California passed seven bills on energy and water disclosure and grid cost sharing. Constellation signed about 1.1 GW of nuclear PPAs with Google and Amazon.</p><div class="src"><a href="https://www.datacenterfrontier.com/machine-learning/news/55409580/ai-infrastructures-next-phase-capital-power-and-the-right-to-build" target="_blank" rel="noopener">Data Center Frontier</a></div></div>
+      </div>
+      <div class="region">
+        <h3>Europe</h3>
+        <div class="item"><div class="item-top"><span class="chip watch">Watch</span><span class="date">This week</span></div><h4>UK budget ties grid priority to a "Data Centre Covenant"</h4><p>Five tests for grid priority as the UK targets 6 GW of data center capacity by 2030.</p><div class="src"><a href="https://www.datacenterdynamics.com/en/news/" target="_blank" rel="noopener">DCD</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip watch">Watch</span><span class="date">This week</span></div><h4>NVIDIA and PreussenElektra study AI data centers at former German nuclear sites</h4><p>It's an early evaluation. The draw is the existing grid connections.</p><div class="src"><a href="https://www.datacenterdynamics.com/en/news/" target="_blank" rel="noopener">DCD</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip risk">Risk</span><span class="date">Oct 3</span></div><h4>Data center backlash spreads to Europe, Asia and Africa</h4><p>Water, power prices and land use are the main complaints.</p><div class="src"><a href="https://www.cnbc.com/2026/10/03/data-center-backlash-europe-asia-africa.html" target="_blank" rel="noopener">CNBC</a></div></div>
+      </div>
+      <div class="region">
+        <h3>Asia-Pacific &amp; Middle East</h3>
+        <div class="item"><div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 27</span></div><h4>AirTrunk raises A$4.25B green loan for SYD3 in Sydney</h4><p>Hyperscale build financing in APAC remains open.</p><div class="src"><a href="https://www.datacenterdynamics.com/en/news/" target="_blank" rel="noopener">DCD</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip watch">Watch</span><span class="date">Mid-2026</span></div><h4>Middle East pipeline is paused, not cancelled, at 2.6 GW</h4><p>Conflict has slowed starts, according to JLL. The region added about 1 GW of IT capacity in 2025 (Omdia).</p><div class="src"><a href="https://www.jll.com/en-uk/insights/emea-data-centre-report" target="_blank" rel="noopener">JLL</a></div></div>
+        <div class="item"><div class="item-top"><span class="chip risk">Risk</span><span class="date">Oct 29</span></div><h4>Equipment shortages stretch lead times worldwide</h4><p>Unpredictable lead times on electrical and cooling gear are threatening project schedules.</p><div class="src"><a href="https://missioncriticalconnections.substack.com/p/mission-critical-news-october-29" target="_blank" rel="noopener">Mission Critical News</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cal-h" style="display:grid;gap:12px">
+    <div class="sec-head"><h2 id="cal-h">Coming up</h2><span class="label">Dates to plan calls around</span></div>
+    <div class="cal">
+      <table>
+        <thead><tr><th>Date</th><th>Account / event</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>~Nov 3</td><td>AMD Q3 earnings (unconfirmed)</td><td>Data center growth rate, Helios ramp, supply commentary</td></tr>
+          <tr><td>Nov 17–18</td><td>Data Center World, Abu Dhabi</td><td>The show's first Middle East edition, a read on Gulf demand</td></tr>
+          <tr><td>Late Nov</td><td>Dell FQ3 FY27 earnings (date TBC)</td><td>AI server backlog and margin. Answers the Barclays downgrade.</td></tr>
+          <tr><td>Early Dec</td><td>HPE FQ4 FY26 earnings (date TBC)</td><td>Gen13 ramp, networking growth, Juniper synergies</td></tr>
+          <tr><td>2027</td><td>Maia 300 · M9882 / XE9810 · DL585a / XD245 / XD285</td><td>Platform ramps. Their design-in windows are open now.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div>Compiled Oct 30, 2026 from public news. Headlines link to the original sources. Figures from secondary outlets are flagged where they're unconfirmed. Check the original before quoting a number to a customer.</div>
+    <div>TI talking points are suggestions for starting conversations, not confirmed customer requirements.</div>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var card = document.getElementById(btn.dataset.target);
+    var name = card.querySelector('h3').textContent;
+    var points = Array.from(card.querySelectorAll('.angle li')).map(function (li) { return '- ' + li.textContent; });
+    var text = name + ' talking points:\n' + points.join('\n');
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy talking points'; }, 1600); };
+    var fallback = function () {
+      var range = document.createRange(); range.selectNodeContents(card.querySelector('.angle ul'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      btn.textContent = 'Selected, press Ctrl+C';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  });
+});
+</script>
