@@ -22,8 +22,14 @@ A daily news brief for a Texas Instruments account manager who covers data cente
 3. **Global data center desk:** major worldwide news, grouped as United States, Europe, and Asia-Pacific & Middle East. Covers power, permitting, financing, big campuses and supply chain.
 4. **Coming up:** earnings dates, trade shows and platform ramps. Unconfirmed dates are marked.
 
+## Schedule
+
+- Runs Monday to Friday at 6:30 AM Taiwan time (Asia/Taipei). There are no weekend runs.
+- Tuesday to Friday: covers news since the previous run.
+- Monday: covers everything since Friday's run, including Friday, Saturday and Sunday in US and Asian time zones. The summary section is titled "Since Friday" and each item is labeled with its day.
+
 ## Rules for each refresh
 
-- Prefer news from the last 24 to 72 hours. Older items stay only if nothing newer replaces them.
+- Stay within the coverage window above. Older items stay only if nothing newer replaces them.
 - Every item links its source. Figures that only one secondary outlet reports are marked unconfirmed.
 - Don't invent customer requirements or TI design wins.
