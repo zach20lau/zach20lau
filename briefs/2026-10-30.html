@@ -102,7 +102,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 <div class="wrap">
   <header class="top">
     <div>
-      <div class="label">Account brief · Microsoft · Dell · HPE · AMD</div>
+      <div class="label">Account brief · AMD · Dell · HPE · Microsoft</div>
       <h1>Data Center Account Brief</h1>
     </div>
     <div class="meta">
@@ -114,10 +114,10 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Today in 60 seconds</h2>
     <ol>
-      <li><span><b>Microsoft's AI spend holds; delivery is the bottleneck.</b> FQ1 capex came in at $45.2B against roughly $50.7B expected because partners delivered capacity late. Azure grew 48%. FY27 capex is still about $170B.</span></li>
       <li><span><b>AMD and Meta went deeper on Oct 27.</b> Meta has Helios racks in testing, and the deal covers a future EPYC called "Verano". AMD Q3 earnings are expected around Nov 3 (not yet confirmed).</span></li>
       <li><span><b>Dell has three new PowerEdge platforms ramping into Q1 CY27.</b> R8822, M9882 and XE9810 use NVIDIA Vera CPUs and Groq 3 LPUs. Boards still being finalized are design-in openings.</span></li>
       <li><span><b>HPE's ProLiant Gen13 runs on 6th Gen EPYC and OCP racks.</b> The XD245 (liquid-cooled) and XD285 ship in 2027. HPE also has a $1.2B Vultr order for AMD Helios racks.</span></li>
+      <li><span><b>Microsoft's AI spend holds; delivery is the bottleneck.</b> FQ1 capex came in at $45.2B against roughly $50.7B expected because partners delivered capacity late. Azure grew 48%. FY27 capex is still about $170B.</span></li>
       <li><span><b>Power and permitting are the industry-wide constraint.</b> 41 local ballot measures across 10 US states vote on data center limits. The UK is tying grid priority to a 6 GW target. Equipment lead times keep stretching.</span></li>
     </ol>
   </section>
@@ -131,46 +131,39 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     </div>
 
     <div class="accounts">
-      <!-- MICROSOFT -->
-      <article class="acct" id="msft">
-        <div class="acct-head"><h3>Microsoft</h3><span class="tick">MSFT · Azure / Maia</span></div>
+      <!-- AMD -->
+      <article class="acct" id="amd">
+        <div class="acct-head"><h3>AMD</h3><span class="tick">AMD · EPYC / Instinct</span></div>
         <ul class="items">
           <li class="item">
-            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
-            <h4>FQ1'27: Azure +48% to $33.2B, capex $45.2B, FY27 capex about $170B</h4>
-            <p>Capex came in under the street because AI cloud partners delivered capacity late. Next quarter's Azure guide is 49–50%. Microsoft added 24 data centers on five continents this quarter, and about 75% of capex now goes to short-lived assets (GPUs and CPUs).</p>
-            <div class="src"><a href="https://siliconangle.com/2026/10/28/microsofts-stock-rises-on-solid-earnings-and-revenue-beat-with-azure-growing-48/" target="_blank" rel="noopener">SiliconANGLE</a> · <a href="https://www.datacenterdynamics.com/en/news/microsoft-q3-earnings-data-center-ai-azure-satya-nadella/" target="_blank" rel="noopener">DCD</a></div>
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 27</span></div>
+            <h4>Meta partnership expanded: Helios racks in testing, future EPYC "Verano"</h4>
+            <p>Millions of EPYC CPUs and Instinct GPUs are already in production at Meta. AMD will also reportedly put $1B into Meta's stock offering.</p>
+            <div class="src"><a href="https://cloudnews.tech/meta-already-testing-amd-helios-racks-plus-1-billion-investment/" target="_blank" rel="noopener">CloudNews</a> · <a href="https://www.igorslab.de/en/amd-meta-deepen-ai-infrastructure-collaboration/" target="_blank" rel="noopener">Igor's Lab</a></div>
           </li>
           <li class="item">
-            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 12</span></div>
-            <h4>Maia 300 custom AI chip starts rolling out next year, at multi-gigawatt scale</h4>
-            <p>Microsoft plans to put gigawatts of its own Maia silicon into its data centers, with Maia 300 deploying in 2027.</p>
-            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-12/microsoft-prepares-to-put-gigawatts-of-its-chips-in-data-centers" target="_blank" rel="noopener">Bloomberg</a></div>
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">~Nov 3</span></div>
+            <h4>Q3 earnings coming up, guided to about $13.0B ± $300M</h4>
+            <p>Q2 data center revenue was about $6.7B, up 107% year over year. Analysts raised Q3 data center estimates by 4.4%. The date is not officially confirmed.</p>
+            <div class="src"><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/08/amd-postq-ai-growth-lifts-estimates-investment-expectations-weigh-on-shares" target="_blank" rel="noopener">S&amp;P Global</a> · <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener">AMD 10-Q</a></div>
           </li>
           <li class="item">
-            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
-            <h4>La Porte, Indiana campus confirmed at 788 MW</h4>
-            <p>NiSource says the site needs $540M in grid upgrades by the end of 2027. Microsoft also bought 37 acres in Licking County, Ohio, and signed two solar PPAs in Japan with Blueleaf Energy (portfolio of about 1.2 GW).</p>
-            <div class="src"><a href="https://panoramanow.com/microsoft-data-center-in-laporte-to-use-788-megawatts-of-power/" target="_blank" rel="noopener">PanoramaNOW</a> · <a href="https://missioncriticalconnections.substack.com/p/mission-critical-news-october-29" target="_blank" rel="noopener">Mission Critical News</a></div>
-          </li>
-          <li class="item">
-            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Oct 18</span></div>
-            <h4>Microsoft pulls out of the Nscale Loughton (UK) site, about $2.7B</h4>
-            <p>The site was stalled by grid power limits. Microsoft says the decision covers that one site, and its US, Norway and Portugal partnerships are unaffected.</p>
-            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-18/microsoft-scraps-uk-data-center-deal-with-nscale-telegraph-says" target="_blank" rel="noopener">Bloomberg</a> · <a href="https://www.benzinga.com/markets/tech/26/10/62596402/microsoft-ai-data-center-misfire-exposes-brutal-reality" target="_blank" rel="noopener">Benzinga</a></div>
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct</span></div>
+            <h4>6th Gen EPYC is landing across OEMs</h4>
+            <p>HPE's first four Gen13 servers are all EPYC, and Helios racks are shipping through HPE/Vultr. AMD forecasts the server CPU market will top $120B by 2030.</p>
+            <div class="src"><a href="https://www.datacenterdynamics.com/en/news/amd-posts-q1-2026-data-center-revenue-of-58bn-forecasts-120bn-server-cpu-income-by-2030/" target="_blank" rel="noopener">DCD</a></div>
           </li>
         </ul>
         <div class="angle">
           <div class="label">TI talking points</div>
           <ul>
-            <li>Demand is real and capacity is late. Lead with supply assurance and lead-time commitments on power and analog.</li>
-            <li>Maia 300 boards are where design-in decisions are made now. Ask about multiphase power, hot-swap/eFuse and sequencing needs for 2027 builds.</li>
-            <li>788 MW sites and grid limits keep 48 V rack power and power-shelf efficiency on the agenda.</li>
+            <li>Helios is a rack-scale reference design. Get TI parts onto AMD's reference BOM for power shelves, VRMs and management, so they carry through to HPE, Meta and others.</li>
+            <li>Verano is the next socket. Ask about reference-platform power and timing requirements early.</li>
+            <li>Listen for supply comments on the Q3 call. They hint at the 2027 build plan.</li>
           </ul>
-          <button class="copy" type="button" data-target="msft">Copy talking points</button>
+          <button class="copy" type="button" data-target="amd">Copy talking points</button>
         </div>
       </article>
-
       <!-- DELL -->
       <article class="acct" id="dell">
         <div class="acct-head"><h3>Dell Technologies</h3><span class="tick">DELL · PowerEdge</span></div>
@@ -210,7 +203,6 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
           <button class="copy" type="button" data-target="dell">Copy talking points</button>
         </div>
       </article>
-
       <!-- HPE -->
       <article class="acct" id="hpe">
         <div class="acct-head"><h3>HPE</h3><span class="tick">HPE · ProLiant / Juniper</span></div>
@@ -244,38 +236,43 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
           <button class="copy" type="button" data-target="hpe">Copy talking points</button>
         </div>
       </article>
-
-      <!-- AMD -->
-      <article class="acct" id="amd">
-        <div class="acct-head"><h3>AMD</h3><span class="tick">AMD · EPYC / Instinct</span></div>
+      <!-- MICROSOFT -->
+      <article class="acct" id="msft">
+        <div class="acct-head"><h3>Microsoft</h3><span class="tick">MSFT · Azure / Maia</span></div>
         <ul class="items">
           <li class="item">
-            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 27</span></div>
-            <h4>Meta partnership expanded: Helios racks in testing, future EPYC "Verano"</h4>
-            <p>Millions of EPYC CPUs and Instinct GPUs are already in production at Meta. AMD will also reportedly put $1B into Meta's stock offering.</p>
-            <div class="src"><a href="https://cloudnews.tech/meta-already-testing-amd-helios-racks-plus-1-billion-investment/" target="_blank" rel="noopener">CloudNews</a> · <a href="https://www.igorslab.de/en/amd-meta-deepen-ai-infrastructure-collaboration/" target="_blank" rel="noopener">Igor's Lab</a></div>
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
+            <h4>FQ1'27: Azure +48% to $33.2B, capex $45.2B, FY27 capex about $170B</h4>
+            <p>Capex came in under the street because AI cloud partners delivered capacity late. Next quarter's Azure guide is 49–50%. Microsoft added 24 data centers on five continents this quarter, and about 75% of capex now goes to short-lived assets (GPUs and CPUs).</p>
+            <div class="src"><a href="https://siliconangle.com/2026/10/28/microsofts-stock-rises-on-solid-earnings-and-revenue-beat-with-azure-growing-48/" target="_blank" rel="noopener">SiliconANGLE</a> · <a href="https://www.datacenterdynamics.com/en/news/microsoft-q3-earnings-data-center-ai-azure-satya-nadella/" target="_blank" rel="noopener">DCD</a></div>
           </li>
           <li class="item">
-            <div class="item-top"><span class="chip watch">Watch</span><span class="date">~Nov 3</span></div>
-            <h4>Q3 earnings coming up, guided to about $13.0B ± $300M</h4>
-            <p>Q2 data center revenue was about $6.7B, up 107% year over year. Analysts raised Q3 data center estimates by 4.4%. The date is not officially confirmed.</p>
-            <div class="src"><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/08/amd-postq-ai-growth-lifts-estimates-investment-expectations-weigh-on-shares" target="_blank" rel="noopener">S&amp;P Global</a> · <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener">AMD 10-Q</a></div>
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 12</span></div>
+            <h4>Maia 300 custom AI chip starts rolling out next year, at multi-gigawatt scale</h4>
+            <p>Microsoft plans to put gigawatts of its own Maia silicon into its data centers, with Maia 300 deploying in 2027.</p>
+            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-12/microsoft-prepares-to-put-gigawatts-of-its-chips-in-data-centers" target="_blank" rel="noopener">Bloomberg</a></div>
           </li>
           <li class="item">
-            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct</span></div>
-            <h4>6th Gen EPYC is landing across OEMs</h4>
-            <p>HPE's first four Gen13 servers are all EPYC, and Helios racks are shipping through HPE/Vultr. AMD forecasts the server CPU market will top $120B by 2030.</p>
-            <div class="src"><a href="https://www.datacenterdynamics.com/en/news/amd-posts-q1-2026-data-center-revenue-of-58bn-forecasts-120bn-server-cpu-income-by-2030/" target="_blank" rel="noopener">DCD</a></div>
+            <div class="item-top"><span class="chip opp">Opportunity</span><span class="date">Oct 28</span></div>
+            <h4>La Porte, Indiana campus confirmed at 788 MW</h4>
+            <p>NiSource says the site needs $540M in grid upgrades by the end of 2027. Microsoft also bought 37 acres in Licking County, Ohio, and signed two solar PPAs in Japan with Blueleaf Energy (portfolio of about 1.2 GW).</p>
+            <div class="src"><a href="https://panoramanow.com/microsoft-data-center-in-laporte-to-use-788-megawatts-of-power/" target="_blank" rel="noopener">PanoramaNOW</a> · <a href="https://missioncriticalconnections.substack.com/p/mission-critical-news-october-29" target="_blank" rel="noopener">Mission Critical News</a></div>
+          </li>
+          <li class="item">
+            <div class="item-top"><span class="chip watch">Watch</span><span class="date">Oct 18</span></div>
+            <h4>Microsoft pulls out of the Nscale Loughton (UK) site, about $2.7B</h4>
+            <p>The site was stalled by grid power limits. Microsoft says the decision covers that one site, and its US, Norway and Portugal partnerships are unaffected.</p>
+            <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-10-18/microsoft-scraps-uk-data-center-deal-with-nscale-telegraph-says" target="_blank" rel="noopener">Bloomberg</a> · <a href="https://www.benzinga.com/markets/tech/26/10/62596402/microsoft-ai-data-center-misfire-exposes-brutal-reality" target="_blank" rel="noopener">Benzinga</a></div>
           </li>
         </ul>
         <div class="angle">
           <div class="label">TI talking points</div>
           <ul>
-            <li>Helios is a rack-scale reference design. Get TI parts onto AMD's reference BOM for power shelves, VRMs and management, so they carry through to HPE, Meta and others.</li>
-            <li>Verano is the next socket. Ask about reference-platform power and timing requirements early.</li>
-            <li>Listen for supply comments on the Q3 call. They hint at the 2027 build plan.</li>
+            <li>Demand is real and capacity is late. Lead with supply assurance and lead-time commitments on power and analog.</li>
+            <li>Maia 300 boards are where design-in decisions are made now. Ask about multiphase power, hot-swap/eFuse and sequencing needs for 2027 builds.</li>
+            <li>788 MW sites and grid limits keep 48 V rack power and power-shelf efficiency on the agenda.</li>
           </ul>
-          <button class="copy" type="button" data-target="amd">Copy talking points</button>
+          <button class="copy" type="button" data-target="msft">Copy talking points</button>
         </div>
       </article>
     </div>

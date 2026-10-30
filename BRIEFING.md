@@ -10,10 +10,12 @@ A daily news brief for a Texas Instruments account manager who covers data cente
 
 | Account | Focus |
 |---|---|
-| Microsoft (MSFT) | Azure data center builds, capex, Maia / Cobalt custom silicon, power and site deals |
+| AMD | EPYC, Instinct, Helios rack-scale systems, hyperscaler deals, data center revenue |
 | Dell Technologies (DELL) | PowerEdge / AI Factory servers, liquid cooling, AI server backlog and margins |
 | HPE | ProLiant / Cray / XD servers, Juniper data center networking, AI system orders |
-| AMD | EPYC, Instinct, Helios rack-scale systems, hyperscaler deals, data center revenue |
+| Microsoft (MSFT) | Azure data center builds, capex, Maia / Cobalt custom silicon, power and site deals |
+
+Accounts always appear in this order on the page: AMD, Dell, HPE, Microsoft.
 
 ## Sections on the page
 
